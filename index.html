@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+	<link rel="stylesheet" href="css/main.css">
+	<script src="https://use.fontawesome.com/eb561c9a9c.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.js"></script> 
+	  <script src="dist/vue-google-maps.js"></script> 
+	<title>Test</title>
+</head>	
+<body>
+	<header>
+		<div class="header-content">
+			<a href="#"><img src="http://letiskovycasopis.sk/wp-content/uploads/2014/09/logo-na-web.png" alt="header logo"></a>
+			<a href="#">Locations</a>
+			<a href="#">Programs</a>
+			<a href="#">Services</a>
+			<a href="#">About</a>
+		</div>
+		<div class="header-content">
+			<div class="border"><a href="#">English</a></div>
+			<i class="fa fa-search" aria-hidden="true"></i>
+		</div>
+	</header>
+	
+	<section id="more-info">
+		<div class="more-info_info">
+			<div class="more-info_info_item"><i class="fa fa-cloud" aria-hidden="true"></i><span id="temp"> 10°C</span></div>
+			<div class="more-info_info_item" ><i class="fa fa-clock-o" aria-hidden="true"> </i> <span id="clock"> </span> Eastern Time</div>
+			<div class="more-info_info_content"><p><span class="location">Orlando International Airport</span><br><span class="title">MCO/KMCO</span><p>Welcome to Signature Flight Support Orlando (MCO), located minutes from all of the major theme parks. Whatever your visit to Central Florida is for business or pleasure, our highly experienced staff is dedicated to provide you wit ha "Magical Experience".</p></p></div>
+		</div>
+
+		<div class="more-info_button">
+			<a href="#" id="right" class="more-info_button_item">Make Reservation</a>
+			<a href="#" class="more-info_button_item"><i class="fa fa-phone" aria-hidden="true"></i>  0914 256 751</a>
+		</div>
+	</section>
+	<div class="more-info-background"></div>
+	
+	<section id="best-class">
+		<div class="best-class_content">
+			<p><span class="title">Best in class</span><p>Welcome to Signature Flight Support Orlando (MCO), located minutes from all of the major theme parks. Whatever your visit to Central Florida is for business or pleasure, our highly experienced staff is dedicated to provide you wit ha "Magical Experience".</p></p>
+			<div class="images">
+				<img src="https://unsplash.it/400/250/?rabdom" alt="random">
+				<img class="smaller" src="https://unsplash.it/300/200/?random" alt="random">
+			</div>
+		</div>
+		<div class="best-class_features">
+			<div class="best-clas_features_item"><i class="fa fa-wifi" aria-hidden="true"></i> Complimentary WiFi</div>
+			<div class="best-clas_features_item"><i class="fa fa-coffee" aria-hidden="true"></i> Starbucks Cafe</div>
+			<div class="best-clas_features_item"><i class="fa fa-heart" aria-hidden="true"></i> Fitnes Center</div>
+			<div class="best-clas_features_item"><i class="fa fa-table" aria-hidden="true"></i> Conference Room</div>
+		</div>
+	</section>
+
+<section id="vue">	
+	<section id="hotel">
+		<div class="hotel-wrapper">
+			<div class="hotel-wrapper_item"><span>Stay in Nearby</span><br><span>Hotels</span></div>
+			<div class="hotel-wrapper_item"><a href="#">View All <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+		</div>
+		<div class="hotel-locations">
+			<div href="#" class="overlay">
+				<div class="card-overlay" v-for="m in markers" v-on:click="center=m.position4">
+					<a class="card">View Location</a>
+					<a class="card"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+				</div>
+				<div class="card-distance">
+					<span>Distance</span>
+					<span>345 km</span>
+				</div>
+			</div>
+			<div href="#" class="overlay">
+				<div class="card-overlay" v-for="m in markers" v-on:click="center=m.position3">
+					<a class="card">View Location</a>
+					<a class="card"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+				</div>
+				<div class="card-distance">
+					<span>Distance</span>
+					<span>345 km</span>
+				</div>
+			</div>
+			<div href="#" class="overlay">
+				<div class="card-overlay" v-for="m in markers" v-on:click="center=m.position2">
+					<a class="card">View Location</a>
+					<a class="card"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+				</div>
+				<div class="card-distance">
+					<span>Distance</span>
+					<span>345 km</span>
+				</div>
+			</div>
+			<div href="#" class="overlay">
+				<div class="card-overlay" v-for="m in markers" v-on:click="center=m.position1">
+					<a class="card">View Location</a>
+					<a class="card"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+				</div>
+				<div class="card-distance">
+					<span>Distance</span>
+					<span>345 km</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <google-map :center="center" :zoom="12" id="map">
+      <google-marker v-for="m in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position"></google-marker>
+</section>
+
+	<div class="position"><div id="grey"></div></div>	
+	<div class="position">
+		<section id="things">
+			<div class="things-content"><h1>Maintenance</h1><img class="smaller" src="https://unsplash.it/320/360/?random" alt="random"></div>
+			<div class="things-content"><h1>Transportation</h1><img class="smaller" src="https://unsplash.it/320/360/?random" alt="random"></div>
+			<div class="things-content"><h1>Catering</h1><img class="smaller" src="https://unsplash.it/320/360/?random" alt="random"></div>
+		</section>
+	</div>
+<div id="hangars-grey"></div>
+	<section id="hangars">
+		<div class="hangars-content">
+			<div class="hangars-content_img">
+				<div class="titles">
+					<div class="desc">Avaible rental</div>
+					<div class="title">Hangars</div>
+				</div>
+				<img src="https://unsplash.it/350/450/?random" alt="random">
+				<img  src="https://unsplash.it/350/450/?random" alt="random">
+			</div>
+		</div>
+		<div class="hangars-button">
+			<div class="desc">Rent hangars at hundreds of locations worldwide</div>
+			<a href="#" id="right2" class="button">View Hangar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+		</div>
+	</section>
+
+<footer>
+	<div class="wrapper">
+		<div class="footer-item"><a href="#" class="logo"> <img src="http://letiskovycasopis.sk/wp-content/uploads/2014/09/logo-na-web.png" alt="header logo"></a></div>
+		<div class="footer-item"><span>Locations</span><ul><li><a href="#">United States</a></li><li><a href="#">Canada</a></li><li><a href="#">Europe</a></li><li><a href="#">Asia</a></li><li><a href="#">Africa</a></li><li><a href="#">South / Central America</a></li><li><a href="#">Carbbean</a></li><li><a href="#">Governemnt / Military</a></li></ul></div>
+		<div class="footer-item"><span>Programs</span><ul><li><a href="#">Loyalty</a></li><li><a href="#">General Aviatoion</a></li><li><a href="#">Signature select</a></li><li><a href="#">Aviation Card</a></li></ul></div>
+		<div class="footer-item"><span>About</span><ul><li><a href="#">Newsroom</a></li><li><a href="#">Events, Social</a></li><li><a href="#">Responsibillity</a></li><li><a href="#">Leadership</a></li><li><a href="#">BBA</a></li><li><a href="#">Aviation</a></li></ul></div>
+		<div class="footer-item"><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Handling Charge Policy</a></li><li><a href="#">Sitemap</a></li><li><a href="#">Contact Our Corporate Office</a></li></ul></div>
+		<div class="footer-item"><div class="item_flex"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></div></div>
+	</div>
+</footer>	
+	
+       <script>
+		function startTime() {
+		    var today = new Date();	
+		    var h = today.getHours();
+		    var m = today.getMinutes();
+
+		    h = checkTime(h);
+		    m = checkTime(m);
+
+		    document.getElementById('clock').innerHTML = h + ":" + m;
+
+		    var timeout = setTimeout(startTime, 100);
+		}
+		function checkTime(i) {
+		    if (i < 10) {i = "0" + i};
+		    return i;
+		
+    </script>
+<script>  
+    Vue.use(VueGoogleMaps, {
+      load: {
+        key: 'AIzaSyD_Qkrvqkxz6sahnp7PDAAWlJOKb7gyW8s'
+      },
+      // Demonstrating how we can customize the name of the components
+      installComponents: false,
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      Vue.component('google-map', VueGoogleMaps.Map);
+      Vue.component('google-marker', VueGoogleMaps.Marker);
+
+      new Vue({
+        el: '#vue',
+        data: {
+          center: {
+            lat: 10.0,
+            lng: 10.0
+          },
+          markers: [{
+            position: {
+              lat: 48.72,
+              lng: 21.26
+            },
+            position1: {
+              lat: 49,
+              lng: 21.26
+            }
+          }, {
+            position2: {
+              lat: 11.0,
+              lng: 11.0
+            },
+            position1: {
+              lat: 48.71,
+              lng: 21.26
+            },
+            position3: {
+              lat: 41,
+              lng: 21
+            },
+            position4: {
+              lat: 50.71,
+              lng: 21.26
+            }
+          }]
+        },
+      });
+    });
+</script>
+	
+</body>
+</html>
